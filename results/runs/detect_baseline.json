@@ -1,0 +1,15 @@
+{
+ "method": "TF-IDF + logistic regression",
+ "train_sentences": 14599,
+ "precision": 0.7062,
+ "recall": 0.7376,
+ "f1": 0.7215,
+ "accuracy": 0.885,
+ "f1_interval": [
+  0.6872,
+  0.757
+ ],
+ "roc_auc": 0.9205,
+ "threshold": 0.1291,
+ "ms_per_sentence": 0.05
+}

@@ -1,0 +1,15 @@
+{
+ "method": "Base model, no examples",
+ "train_sentences": 0,
+ "precision": 0.3592,
+ "recall": 0.745,
+ "f1": 0.4847,
+ "accuracy": 0.68,
+ "f1_interval": [
+  0.4498,
+  0.519
+ ],
+ "roc_auc": 0.7575,
+ "threshold": 0.6761,
+ "ms_per_sentence": 37.1
+}

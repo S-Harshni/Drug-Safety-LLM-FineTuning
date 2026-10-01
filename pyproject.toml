@@ -1,0 +1,17 @@
+[project]
+name = "drug-safety-llm-finetuning"
+version = "1.0.0"
+description = "LoRA fine-tuning of a small open-source LLM to find adverse drug events, compared with prompting"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 140
+src = ["src", "tests", "."]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
