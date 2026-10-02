@@ -1,0 +1,424 @@
+{
+ "detection": [
+  {
+   "text": "A 62-year-old woman developed severe hyponatremia three days after starting sertraline.",
+   "label": 1,
+   "score": 3.754,
+   "predicted": 1
+  },
+  {
+   "text": "The patient received amoxicillin for ten days and recovered fully.",
+   "label": 0,
+   "score": -7.529,
+   "predicted": 0
+  },
+  {
+   "text": "Rhabdomyolysis occurred in a man taking simvastatin together with clarithromycin.",
+   "label": 1,
+   "score": 3.768,
+   "predicted": 1
+  },
+  {
+   "text": "Metformin is the first-line treatment for type 2 diabetes.",
+   "label": 0,
+   "score": -7.099,
+   "predicted": 0
+  },
+  {
+   "text": "We report a case of lithium-induced nephrogenic diabetes insipidus.",
+   "label": 1,
+   "score": 4.349,
+   "predicted": 1
+  },
+  {
+   "text": "Blood cultures were negative and the chest radiograph was normal.",
+   "label": 0,
+   "score": -7.715,
+   "predicted": 0
+  },
+  {
+   "text": "Two weeks after the first infusion of infliximab she presented with a lupus-like rash.",
+   "label": 1,
+   "score": -0.467,
+   "predicted": 1
+  },
+  {
+   "text": "Warfarin was continued at the same dose after discharge.",
+   "label": 0,
+   "score": -6.798,
+   "predicted": 0
+  },
+  {
+   "text": "Hair loss resolved when valproate was withdrawn.",
+   "label": 1,
+   "score": 0.074,
+   "predicted": 1
+  },
+  {
+   "text": "The tumour was resected and adjuvant cisplatin was planned.",
+   "label": 0,
+   "score": -6.204,
+   "predicted": 0
+  },
+  {
+   "text": "Acute pancreatitis associated with azathioprine therapy in a patient with Crohn's disease.",
+   "label": 1,
+   "score": 5.619,
+   "predicted": 1
+  },
+  {
+   "text": "Fever and cough improved after treatment with levofloxacin.",
+   "label": 0,
+   "score": -2.579,
+   "predicted": 0
+  },
+  {
+   "text": "Tendon rupture has been described in elderly patients receiving ciprofloxacin.",
+   "label": 1,
+   "score": 3.546,
+   "predicted": 1
+  },
+  {
+   "text": "She had a history of hypertension treated with amlodipine.",
+   "label": 0,
+   "score": -4.36,
+   "predicted": 0
+  },
+  {
+   "text": "Visual hallucinations began shortly after the dose of ropinirole was increased.",
+   "label": 1,
+   "score": -1.331,
+   "predicted": 0
+  },
+  {
+   "text": "The study enrolled 120 adults with moderate asthma.",
+   "label": 0,
+   "score": -6.348,
+   "predicted": 0
+  }
+ ],
+ "extraction": [
+  {
+   "text": "A 62-year-old woman developed severe hyponatremia three days after starting sertraline.",
+   "expected": [
+    [
+     "sertraline",
+     "severe hyponatremia"
+    ]
+   ],
+   "tuned": [
+    [
+     "sertraline",
+     "hyponatremia"
+    ]
+   ],
+   "base": [
+    [
+     "sertraline",
+     "severe hyponatremia"
+    ]
+   ],
+   "prompted": [
+    [
+     "sertraline",
+     "severe hyponatremia"
+    ]
+   ]
+  },
+  {
+   "text": "Rhabdomyolysis occurred in a man taking simvastatin together with clarithromycin.",
+   "expected": [
+    [
+     "clarithromycin",
+     "rhabdomyolysis"
+    ],
+    [
+     "simvastatin",
+     "rhabdomyolysis"
+    ]
+   ],
+   "tuned": [
+    [
+     "clarithromycin",
+     "rhabdomyolysis"
+    ],
+    [
+     "simvastatin",
+     "rhabdomyolysis"
+    ]
+   ],
+   "base": [
+    [
+     "clarithromycin",
+     "rhabdomyolysis"
+    ],
+    [
+     "simvastatin",
+     "rhabdomyolysis"
+    ]
+   ],
+   "prompted": [
+    [
+     "clarithromycin",
+     "rhabdomyolysis"
+    ],
+    [
+     "simvastatin",
+     "rhabdomyolysis"
+    ]
+   ]
+  },
+  {
+   "text": "We report a case of lithium-induced nephrogenic diabetes insipidus.",
+   "expected": [
+    [
+     "lithium",
+     "nephrogenic diabetes insipidus"
+    ]
+   ],
+   "tuned": [
+    [
+     "lithium",
+     "nephrogenic diabetes insipidus"
+    ]
+   ],
+   "base": [
+    [
+     "lithium",
+     "nephrogenic diabetes insipidus"
+    ]
+   ],
+   "prompted": [
+    [
+     "lithium",
+     "nephrogenic diabetes insipidus"
+    ]
+   ]
+  },
+  {
+   "text": "Hair loss resolved when valproate was withdrawn.",
+   "expected": [
+    [
+     "valproate",
+     "hair loss"
+    ]
+   ],
+   "tuned": [
+    [
+     "valproate",
+     "hair loss"
+    ]
+   ],
+   "base": [
+    [
+     "valproate",
+     "hair loss"
+    ]
+   ],
+   "prompted": [
+    [
+     "valproate",
+     "hair loss"
+    ]
+   ]
+  },
+  {
+   "text": "Acute pancreatitis associated with azathioprine therapy in a patient with Crohn's disease.",
+   "expected": [
+    [
+     "azathioprine",
+     "acute pancreatitis"
+    ]
+   ],
+   "tuned": [
+    [
+     "azathioprine",
+     "acute pancreatitis"
+    ]
+   ],
+   "base": [
+    [
+     "azathioprine",
+     "acute pancreatitis"
+    ],
+    [
+     "crohn's disease",
+     "pancreatitis"
+    ]
+   ],
+   "prompted": [
+    [
+     "azathioprine",
+     "acute pancreatitis"
+    ]
+   ]
+  },
+  {
+   "text": "Visual hallucinations and confusion began shortly after the dose of ropinirole was increased.",
+   "expected": [
+    [
+     "ropinirole",
+     "confusion"
+    ],
+    [
+     "ropinirole",
+     "visual hallucinations"
+    ]
+   ],
+   "tuned": [
+    [
+     "ropinirole",
+     "confusion"
+    ],
+    [
+     "ropinirole",
+     "visual hallucinations"
+    ]
+   ],
+   "base": [
+    [
+     "ropinirole",
+     "confusion"
+    ],
+    [
+     "ropinirole",
+     "visual hallucinations"
+    ]
+   ],
+   "prompted": [
+    [
+     "ropinirole",
+     "confusion"
+    ],
+    [
+     "ropinirole",
+     "visual hallucinations"
+    ]
+   ]
+  },
+  {
+   "text": "Tendon rupture has been described in elderly patients receiving ciprofloxacin.",
+   "expected": [
+    [
+     "ciprofloxacin",
+     "tendon rupture"
+    ]
+   ],
+   "tuned": [
+    [
+     "ciprofloxacin",
+     "tendon rupture"
+    ]
+   ],
+   "base": [
+    [
+     "ciprofloxacin",
+     "tendon rupture"
+    ]
+   ],
+   "prompted": [
+    [
+     "ciprofloxacin",
+     "tendon rupture"
+    ]
+   ]
+  },
+  {
+   "text": "Two weeks after the first infusion of infliximab she presented with a lupus-like rash.",
+   "expected": [
+    [
+     "infliximab",
+     "lupus-like rash"
+    ]
+   ],
+   "tuned": [
+    [
+     "infliximab",
+     "lupus-like rash"
+    ]
+   ],
+   "base": [
+    [
+     "infliximab",
+     "lupus-like rash"
+    ]
+   ],
+   "prompted": [
+    [
+     "infliximab",
+     "lupus-like rash"
+    ]
+   ]
+  },
+  {
+   "text": "Methotrexate was stopped because of pneumonitis and mouth ulcers.",
+   "expected": [
+    [
+     "methotrexate",
+     "mouth ulcers"
+    ],
+    [
+     "methotrexate",
+     "pneumonitis"
+    ]
+   ],
+   "tuned": [
+    [
+     "methotrexate",
+     "mouth ulcers"
+    ],
+    [
+     "methotrexate",
+     "pneumonitis"
+    ]
+   ],
+   "base": [
+    [
+     "methotrexate",
+     "mouth ulcers"
+    ],
+    [
+     "methotrexate",
+     "pneumonitis"
+    ]
+   ],
+   "prompted": [
+    [
+     "methotrexate",
+     "mouth ulcers"
+    ],
+    [
+     "methotrexate",
+     "pneumonitis"
+    ]
+   ]
+  },
+  {
+   "text": "Gingival overgrowth is a recognised complication of phenytoin.",
+   "expected": [
+    [
+     "phenytoin",
+     "gingival overgrowth"
+    ]
+   ],
+   "tuned": [
+    [
+     "phenytoin",
+     "gingival overgrowth"
+    ]
+   ],
+   "base": [
+    [
+     "phenytoin",
+     "gingival overgrowth"
+    ]
+   ],
+   "prompted": [
+    [
+     "phenytoin",
+     "gingival overgrowth"
+    ]
+   ]
+  }
+ ]
+}

@@ -44,6 +44,18 @@ Every method is scored on the same 2,000 held-out sentences. Thresholds are chos
 - **Prompting the small model is not enough.** Without training it scores 48.5%, and adding examples to the prompt made it worse (41.2%).
 - **A model six times larger, with examples in the prompt, gets close to the baseline** (71.2%) but takes 263 ms per sentence against 37 ms for the fine-tuned small model.
 
+### Adapter size
+
+Three LoRA ranks on the same 1,000 training sentences, scored on the same 2,000 test sentences.
+
+| Rank | Trained parameters | Share of the model | F1 | ROC AUC |
+| ---: | ---: | ---: | ---: | ---: |
+| 2 | 270,336 | 0.05% | 63.9% | 0.880 |
+| 8 | 1,081,344 | 0.22% | 72.1% | 0.929 |
+| 32 | 4,325,376 | 0.87% | 72.0% | 0.941 |
+
+Rank 2 is too small (63.9%). Rank 8 and rank 32 give the same F1 (72.1% and 72.0%), so four times the parameters bought nothing at this data size; more labelled sentences helped far more than a wider adapter. Rank 8 is used for every other run.
+
 ### Extraction
 
 Scored on 400 held-out sentences. A pair counts only if both the drug and the effect match the annotation exactly.
