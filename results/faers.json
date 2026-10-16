@@ -1,0 +1,363 @@
+{
+ "source": {
+  "sentences": 120,
+  "faers_reports": 20692690,
+  "faers_last_updated": "2026-07-30",
+  "drugs": 125,
+  "drugs_in_faers": 120,
+  "drugs_with_label": 92
+ },
+ "summary": {
+  "model": {
+   "pairs": 194,
+   "status": {
+    "checked": 100,
+    "effect not a FAERS term": 88,
+    "drug not in FAERS": 6
+   },
+   "checked": 100,
+   "signal": 54,
+   "signal_share": 0.54,
+   "with_label": 82,
+   "on_label": 43,
+   "on_label_share": 0.5244,
+   "known": 30,
+   "candidate": 20,
+   "label_only": 13,
+   "neither": 19,
+   "median_prr": 2.56
+  },
+  "human": {
+   "pairs": 191,
+   "status": {
+    "checked": 98,
+    "effect not a FAERS term": 91,
+    "drug not in FAERS": 2
+   },
+   "checked": 98,
+   "signal": 55,
+   "signal_share": 0.5612,
+   "with_label": 85,
+   "on_label": 44,
+   "on_label_share": 0.5176,
+   "known": 32,
+   "candidate": 20,
+   "label_only": 12,
+   "neither": 21,
+   "median_prr": 2.79
+  },
+  "control": {
+   "pairs": 195,
+   "status": {
+    "checked": 105,
+    "effect not a FAERS term": 84,
+    "drug not in FAERS": 6
+   },
+   "checked": 105,
+   "signal": 21,
+   "signal_share": 0.2,
+   "with_label": 77,
+   "on_label": 18,
+   "on_label_share": 0.2338,
+   "known": 5,
+   "candidate": 10,
+   "label_only": 13,
+   "neither": 49,
+   "median_prr": 0.76
+  }
+ },
+ "examples": {
+  "known": [
+   {
+    "drug": "ethambutol",
+    "effect": "bilateral optic neuropathy",
+    "term": "OPTIC NEUROPATHY",
+    "status": "checked",
+    "a": 30,
+    "prr": 113.901,
+    "prr_low": 79.588,
+    "chi2": 3197.91,
+    "signal": true,
+    "on_label": true
+   },
+   {
+    "drug": "metformin",
+    "effect": "lactic acidosis",
+    "term": "LACTIC ACIDOSIS",
+    "status": "checked",
+    "a": 19399,
+    "prr": 72.896,
+    "prr_low": 71.28,
+    "chi2": 521697.28,
+    "signal": true,
+    "on_label": true
+   },
+   {
+    "drug": "fludarabine",
+    "effect": "aml",
+    "term": "ACUTE MYELOID LEUKAEMIA",
+    "status": "checked",
+    "a": 785,
+    "prr": 28.447,
+    "prr_low": 26.494,
+    "chi2": 19662.84,
+    "signal": true,
+    "on_label": true
+   },
+   {
+    "drug": "colchicine",
+    "effect": "myopathy",
+    "term": "MYOPATHY",
+    "status": "checked",
+    "a": 229,
+    "prr": 21.624,
+    "prr_low": 18.974,
+    "chi2": 4358.2,
+    "signal": true,
+    "on_label": true
+   },
+   {
+    "drug": "clomipramine",
+    "effect": "serotonin syndrome",
+    "term": "SEROTONIN SYNDROME",
+    "status": "checked",
+    "a": 80,
+    "prr": 19.547,
+    "prr_low": 15.724,
+    "chi2": 1383.17,
+    "signal": true,
+    "on_label": true
+   },
+   {
+    "drug": "insulin",
+    "effect": "hypoglycaemia",
+    "term": "HYPOGLYCAEMIA",
+    "status": "checked",
+    "a": 14279,
+    "prr": 18.108,
+    "prr_low": 17.761,
+    "chi2": 158277.12,
+    "signal": true,
+    "on_label": true
+   },
+   {
+    "drug": "alendronate sodium",
+    "effect": "scleritis",
+    "term": "SCLERITIS",
+    "status": "checked",
+    "a": 115,
+    "prr": 15.988,
+    "prr_low": 13.225,
+    "chi2": 1476.73,
+    "signal": true,
+    "on_label": true
+   },
+   {
+    "drug": "methotrexate",
+    "effect": "leukoencephalopathy",
+    "term": "LEUKOENCEPHALOPATHY",
+    "status": "checked",
+    "a": 1008,
+    "prr": 15.485,
+    "prr_low": 14.405,
+    "chi2": 9684.7,
+    "signal": true,
+    "on_label": true
+   },
+   {
+    "drug": "ziprasidone",
+    "effect": "tardive dyskinesia",
+    "term": "TARDIVE DYSKINESIA",
+    "status": "checked",
+    "a": 103,
+    "prr": 12.372,
+    "prr_low": 10.212,
+    "chi2": 1061.1,
+    "signal": true,
+    "on_label": true
+   },
+   {
+    "drug": "penicillin g",
+    "effect": "hypersensitivity reaction",
+    "term": "HYPERSENSITIVITY",
+    "status": "checked",
+    "a": 450,
+    "prr": 10.515,
+    "prr_low": 9.628,
+    "chi2": 3854.76,
+    "signal": true,
+    "on_label": true
+   },
+   {
+    "drug": "heparin",
+    "effect": "thrombosis",
+    "term": "THROMBOSIS",
+    "status": "checked",
+    "a": 453,
+    "prr": 8.312,
+    "prr_low": 7.59,
+    "chi2": 2887.86,
+    "signal": true,
+    "on_label": true
+   },
+   {
+    "drug": "albendazole",
+    "effect": "fever",
+    "term": "PYREXIA",
+    "status": "checked",
+    "a": 243,
+    "prr": 7.808,
+    "prr_low": 6.943,
+    "chi2": 1434.58,
+    "signal": true,
+    "on_label": true
+   }
+  ],
+  "candidate": [
+   {
+    "drug": "leflunomide",
+    "effect": "lower respiratory tract infections",
+    "term": "LOWER RESPIRATORY TRACT INFECTION",
+    "status": "checked",
+    "a": 5703,
+    "prr": 28.924,
+    "prr_low": 28.15,
+    "chi2": 133440.0,
+    "signal": true,
+    "on_label": false
+   },
+   {
+    "drug": "foscarnet",
+    "effect": "electrolyte disorders",
+    "term": "ELECTROLYTE IMBALANCE",
+    "status": "checked",
+    "a": 45,
+    "prr": 20.738,
+    "prr_low": 15.501,
+    "chi2": 822.34,
+    "signal": true,
+    "on_label": false
+   },
+   {
+    "drug": "foscarnet",
+    "effect": "severe hypomagnesemia",
+    "term": "HYPOMAGNESAEMIA",
+    "status": "checked",
+    "a": 54,
+    "prr": 20.629,
+    "prr_low": 15.82,
+    "chi2": 984.95,
+    "signal": true,
+    "on_label": false
+   },
+   {
+    "drug": "itraconazole",
+    "effect": "vanishing bile duct syndrome",
+    "term": "VANISHING BILE DUCT SYNDROME",
+    "status": "checked",
+    "a": 6,
+    "prr": 9.804,
+    "prr_low": 4.396,
+    "chi2": 38.8,
+    "signal": true,
+    "on_label": false
+   },
+   {
+    "drug": "furosemide",
+    "effect": "congestive heart failure",
+    "term": "CARDIAC FAILURE CONGESTIVE",
+    "status": "checked",
+    "a": 12088,
+    "prr": 9.064,
+    "prr_low": 8.892,
+    "chi2": 72198.14,
+    "signal": true,
+    "on_label": false
+   },
+   {
+    "drug": "gentamicin",
+    "effect": "acute renal failure",
+    "term": "RENAL FAILURE",
+    "status": "checked",
+    "a": 706,
+    "prr": 7.077,
+    "prr_low": 6.583,
+    "chi2": 3655.26,
+    "signal": true,
+    "on_label": false
+   },
+   {
+    "drug": "sorafenib",
+    "effect": "hyperuricemia",
+    "term": "HYPERURICAEMIA",
+    "status": "checked",
+    "a": 27,
+    "prr": 6.722,
+    "prr_low": 4.605,
+    "chi2": 124.89,
+    "signal": true,
+    "on_label": false
+   },
+   {
+    "drug": "flurbiprofen",
+    "effect": "acute tubulointerstitial nephritis",
+    "term": "TUBULOINTERSTITIAL NEPHRITIS",
+    "status": "checked",
+    "a": 8,
+    "prr": 5.721,
+    "prr_low": 2.866,
+    "chi2": 26.61,
+    "signal": true,
+    "on_label": false
+   },
+   {
+    "drug": "ampicillin",
+    "effect": "rapid onset of renal failure",
+    "term": "RENAL FAILURE",
+    "status": "checked",
+    "a": 375,
+    "prr": 5.479,
+    "prr_low": 4.959,
+    "chi2": 1363.88,
+    "signal": true,
+    "on_label": false
+   },
+   {
+    "drug": "itraconazole",
+    "effect": "drug eruption",
+    "term": "DRUG ERUPTION",
+    "status": "checked",
+    "a": 47,
+    "prr": 4.825,
+    "prr_low": 3.626,
+    "chi2": 138.26,
+    "signal": true,
+    "on_label": false
+   },
+   {
+    "drug": "quinine",
+    "effect": "hypoglycaemia",
+    "term": "HYPOGLYCAEMIA",
+    "status": "checked",
+    "a": 78,
+    "prr": 3.737,
+    "prr_low": 2.996,
+    "chi2": 153.32,
+    "signal": true,
+    "on_label": false
+   },
+   {
+    "drug": "aspirin",
+    "effect": "acute subdural haematoma",
+    "term": "SUBDURAL HAEMATOMA",
+    "status": "checked",
+    "a": 1661,
+    "prr": 3.365,
+    "prr_low": 3.197,
+    "chi2": 2342.18,
+    "signal": true,
+    "on_label": false
+   }
+  ]
+ }
+}

@@ -89,6 +89,41 @@ const TABS = {
         })));
   },
 
+  'Real-world signals'(D) {
+    const R = D.faers;
+    if (!R) return section(intro('Real-world results not generated yet: run faers_signals.py.'));
+    const S = R.summary, src = R.source;
+    const sets = [['model', 'Fine-tuned model'], ['human', 'Human annotators'], ['control', 'Shuffled pairs (control)']];
+    const rows = sets.map(([k, name]) => ({ name, ...S[k] }));
+    const pairCols = [{ label: 'Drug', key: 'drug' }, { label: 'Effect (as extracted)', key: 'effect' }, { label: 'FAERS term', key: 'term' },
+      { label: 'Reports', key: 'a', num: true, format: F.int }, { label: 'PRR', key: 'prr', num: true, format: v => F.dec(v, 1) },
+      { label: 'PRR, lower 95%', key: 'prr_low', num: true, format: v => F.dec(v, 1) }];
+    return section(
+      intro(`Do the (drug, adverse effect) pairs the fine-tuned model writes out match what happens in the real world? Each pair from ${src.sentences} held-out case-report sentences is checked against ${F.int(src.faers_reports)} FDA Adverse Event Reporting System (FAERS) reports, the post-market data drug-safety teams monitor, and against the drug's FDA label. A pair is a signal when the effect is reported with the drug disproportionately often (PRR ≥ 2, χ² ≥ 4, at least 3 reports). The same check runs on the human annotations and on shuffled pairs nobody wrote.`),
+      tiles([
+        ['Model pairs confirmed in FAERS', F.pct(S.model.signal_share), `${S.model.signal} of ${S.model.checked} checked pairs are signals`],
+        ['Same check, human annotations', F.pct(S.human.signal_share), `${S.human.signal} of ${S.human.checked}`],
+        ['Same check, shuffled pairs', F.pct(S.control.signal_share), `${S.control.signal} of ${S.control.checked}: what chance looks like`],
+        ['Signals not on the FDA label', F.int(S.model.candidate), 'model pairs a safety reviewer would look at first'],
+      ]),
+      grid(
+        card({
+          title: 'Model output against real-world data', wide: true, sub: 'Share of checked pairs that are FAERS signals, and share whose effect is written in the drug\'s FDA label.',
+          legend: [{ name: 'FAERS signal', color: C.actual, shape: 'box' }, { name: 'On the FDA label', color: C.model, shape: 'box' }],
+          table: { columns: [{ label: 'Pairs', key: 'name' }, { label: 'Pairs', key: 'pairs', num: true }, { label: 'Checked', key: 'checked', num: true },
+            pctCol('FAERS signal', 'signal_share'), pctCol('On FDA label', 'on_label_share'), { label: 'Median PRR', key: 'median_prr', num: true, format: v => F.dec(v, 1) },
+            { label: 'Known', key: 'known', num: true }, { label: 'Signal, not on label', key: 'candidate', num: true }], rows },
+          notes: ['Checked = the drug is in FAERS and the effect maps to a MedDRA term FAERS uses. Effects are mapped to MedDRA terms with the same small normalisation for every set (spelling, plural, modifiers such as "severe", everyday words such as fever → pyrexia); pairs that still match no FAERS term (for example "increased affect") are left out.'],
+        }, p => hbars(p, { rows: rows.map(r => ({ label: r.name, values: [r.signal_share, r.on_label_share] })),
+          series: [{ name: 'FAERS signal', color: C.actual }, { name: 'On the FDA label', color: C.model }], format: F.pct, max: 1 })),
+        card({ title: 'Signals not yet on the FDA label', sub: 'Model pairs with a FAERS signal whose effect is not written in the label: the queue a safety reviewer would start with.', wide: true,
+          table: { columns: pairCols, rows: R.examples.candidate },
+          notes: ['A signal is a statistical association, not proof of cause. Some rows are wording gaps (the gentamicin label says nephrotoxicity, not renal failure) and some are confounding by indication (furosemide is given for heart failure, so heart failure is reported with it). Telling these apart is the reviewer\'s job.'] }),
+        card({ title: 'Known effects the model recovered', sub: 'Model pairs that are both FAERS signals and on the label, strongest first.', wide: true,
+          table: { columns: pairCols, rows: R.examples.known },
+          notes: [`FAERS data as of ${src.faers_last_updated}, via openFDA. Reports are voluntary and unverified; counts reflect reporting, not incidence. A drug is matched by generic or brand name in any role on a report.`] })));
+  },
+
   Method(D) {
     const S = D.setup, best = D.detection.sizes.at(-1);
     return section(

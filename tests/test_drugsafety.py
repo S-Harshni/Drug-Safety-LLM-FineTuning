@@ -113,3 +113,31 @@ def test_training_labels_cover_only_the_answer():
     assert ids == [3, 3, 5, 3, 3] and labels == [-100, -100, -100, 3, 3]
     batch_ids, mask, batch_labels = finetune.collate(Tok(), [(ids, labels), ([7], [7])])
     assert batch_ids.tolist()[1] == [0, 0, 0, 0, 7] and mask.tolist()[1] == [0, 0, 0, 0, 1] and batch_labels.tolist()[1] == [-100] * 4 + [7]
+
+
+# ---- real-world check against FDA data (faers.py) ----
+from drugsafety import faers  # noqa: E402
+
+
+def test_prr_matches_a_hand_worked_2x2_table():
+    # 20 of 1,000 reports with the drug mention the effect, against 200 of 99,000 reports without the drug
+    s = faers.prr(a=20, drug_total=1000, reaction_total=220, n=100_000)
+    assert s["prr"] == pytest.approx((20 / 1000) / (200 / 99_000), rel=1e-3)
+    assert s["prr_low"] < s["prr"] and faers.is_signal(s)
+    assert not faers.is_signal(faers.prr(a=2, drug_total=1000, reaction_total=220, n=100_000))  # too few reports
+
+
+def test_effect_text_maps_to_meddra_spelling_and_label_matching_accepts_both_spellings():
+    assert faers.to_pt("hemorrhagic diarrhea") == "HAEMORRHAGIC DIARRHOEA"
+    assert "RASH" in faers.candidates("rashes") and "HEPATITIS" in faers.candidates("acute hepatitis")
+    label = "6 adverse reactions: diarrhea, nausea and severe hepatotoxicity have been reported."
+    assert faers.on_label(label, "diarrhoea", "DIARRHOEA") and faers.on_label(label, "hepatotoxicity", None)
+    assert not faers.on_label(label, "rash", "RASH")
+
+
+def test_client_answers_from_cache_without_network(tmp_path):
+    c = faers.Client(cache=tmp_path / "c.json.gz", offline=True)
+    c.cache["event?limit=1"] = {"meta": {"results": {"total": 5}}}
+    c.save()
+    again = faers.Client(cache=tmp_path / "c.json.gz", offline=True)
+    assert again.get("event", limit=1)["meta"]["results"]["total"] == 5 and again.get("label", limit=1) is None

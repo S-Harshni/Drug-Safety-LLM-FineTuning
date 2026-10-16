@@ -1,6 +1,6 @@
 """Merge the experiment results into docs/data.json for the demo page.
 
-    python run.py && python eval_prompting.py && python demo_examples.py && python build_demo.py
+    python run.py && python eval_prompting.py && python demo_examples.py && python faers_signals.py && python build_demo.py
 """
 import json
 import sys
@@ -60,6 +60,7 @@ def main() -> None:
                        "prompted": [slim(r) for r in prompting["extraction"]] if prompting else []},
         "prompted_model": prompting and {k: prompting[k] for k in ("model", "runtime", "detect_sentences", "extract_sentences")},
         "detect_examples": examples["detection"], "extract_examples": examples["extraction"],
+        "faers": json.loads((ROOT / "results" / "faers.json").read_text()) if (ROOT / "results" / "faers.json").exists() else None,
     }
     (ROOT / "docs" / "data.json").write_text(json.dumps(out, separators=(",", ":")))
     print("written", (ROOT / "docs" / "data.json").stat().st_size // 1024, "KB")

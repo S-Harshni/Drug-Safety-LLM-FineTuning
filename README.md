@@ -71,6 +71,32 @@ The fine-tuned 0.5B model reaches **72.4%** pair F1 and gets 67.0% of sentences 
 
 ![Extraction](docs/img/extraction.png)
 
+### Real-world check against FDA data
+
+Do the pairs the fine-tuned model writes out match what happens after a drug is on the market? Each (drug, effect) pair
+from the first 120 held-out sentences is checked against **20,692,690 reports in FAERS**, the FDA Adverse Event Reporting
+System that drug-safety teams monitor, and against the drug's **FDA label** ([`faers_signals.py`](faers_signals.py),
+[`faers.py`](src/drugsafety/faers.py), data from openFDA). A pair is a **signal** when the effect is reported with the drug
+disproportionately often: proportional reporting ratio (PRR) >= 2, chi-squared >= 4 and at least 3 reports (Evans et al., 2001).
+The same check runs on the annotators' pairs and on shuffled pairs (each model pair given an effect from another sentence).
+
+| Pairs | Checked | FAERS signal | Effect on the FDA label | Median PRR |
+| --- | ---: | ---: | ---: | ---: |
+| **Fine-tuned model** | 100 of 194 | **54.0%** | **52.4%** | 2.56 |
+| Human annotators | 98 of 191 | 56.1% | 51.8% | 2.79 |
+| Shuffled pairs (chance) | 102 of 194 | 22.6% | 20.5% | 1.13 |
+
+- **The model's output behaves like expert annotation in real-world data**, and is confirmed about 2.4 times as often as chance pairs.
+- Known effects it recovered include ethambutol and optic neuropathy (PRR 114), metformin and lactic acidosis (PRR 73) and
+  methotrexate and leukoencephalopathy (PRR 15).
+- **20 of its pairs are FAERS signals whose effect the label does not mention**: the queue a safety reviewer would start with.
+  Some are wording gaps (the gentamicin label says nephrotoxicity, not renal failure) and some are confounding by indication
+  (furosemide is given for heart failure); a signal is an association, not proof of cause.
+- "Checked" means the drug is in FAERS and the effect maps to a MedDRA term. Mapping uses the same small normalisation for
+  every set (British spelling, plurals, modifiers such as "severe", everyday words such as fever to pyrexia, and common
+  abbreviations such as 5-FU). Every openFDA response is cached in `data/faers_cache.json.gz`, so `python faers_signals.py --offline`
+  reproduces the table without the API.
+
 ## How it works
 
 - **Base model:** [`Qwen/Qwen2.5-0.5B-Instruct`](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct), frozen.
@@ -88,16 +114,19 @@ python run.py               # downloads the corpus; baseline, prompting the smal
 ollama pull qwen2.5:3b && python eval_prompting.py    # the larger prompted model
 python demo_examples.py     # runs the adapters on sentences written for the demo page
 python build_demo.py        # docs/data.json for the demo page
-pytest -q                   # 10 tests
+python faers_signals.py     # real-world check against FDA data (cached; --offline needs no API)
+pytest -q                   # 13 tests
 ```
 
 Tested on an Apple-silicon laptop (mps); it also runs on CUDA or, slowly, on CPU.
 
 ## Tests
 
-10 tests, run in CI: the hash split and de-duplication, every metric on a hand-worked case, threshold selection, the bootstrap interval, prompt construction and parsing, that a fresh LoRA adapter changes nothing and trains only adapter weights, and that training labels cover only the answer tokens.
+13 tests, run in CI: the hash split and de-duplication, every metric on a hand-worked case, threshold selection, the bootstrap interval, prompt construction and parsing, that a fresh LoRA adapter changes nothing and trains only adapter weights, that training labels cover only the answer tokens, the PRR on a hand-worked 2x2 table, MedDRA spelling and label matching, and the offline cache.
 
 ## Limitations
+
+- FAERS reports are voluntary and unverified, so counts reflect reporting, not incidence; a drug is matched by name in any role on a report. Without an openFDA key the check covers 120 of the 400 held-out sentences (1,000 requests a day).
 
 - The public corpus has no document ids, so sentences from the same case report can fall on both sides of the split. That favours every trained method, the baseline included.
 - One random seed and one base model; the 95% intervals show how much the test sample alone moves a score.
