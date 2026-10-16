@@ -36,7 +36,8 @@ TOP = 100           # most reported terms per count without a key
 def pair_sets() -> dict[str, list[tuple[str, str]]]:
     test = data.evaluation_sets()["extract_test"]
     outputs = json.loads((ROOT / "results" / "runs" / "extract_lora.json").read_text())["outputs"]
-    norm = lambda pairs: [(d.strip().lower(), e.strip().lower()) for d, e in pairs if d.strip() and e.strip()]  # noqa: E731
+    # sorted: parse_pairs returns a set, whose order changes between runs, and the shuffle below must be reproducible
+    norm = lambda pairs: sorted({(d.strip().lower(), e.strip().lower()) for d, e in pairs if d.strip() and e.strip()})  # noqa: E731
     model = [norm(prompts.parse_pairs(o)) for o in outputs[:SENTENCES]]
     human = [norm(p) for p in list(test.pairs)[:SENTENCES]]
     rng = random.Random(0)

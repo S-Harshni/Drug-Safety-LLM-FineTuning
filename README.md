@@ -84,9 +84,9 @@ The same check runs on the annotators' pairs and on shuffled pairs (each model p
 | --- | ---: | ---: | ---: | ---: |
 | **Fine-tuned model** | 100 of 194 | **54.0%** | **52.4%** | 2.56 |
 | Human annotators | 98 of 191 | 56.1% | 51.8% | 2.79 |
-| Shuffled pairs (chance) | 102 of 194 | 22.6% | 20.5% | 1.13 |
+| Shuffled pairs (chance) | 103 of 194 | 27.2% | 23.1% | 1.12 |
 
-- **The model's output behaves like expert annotation in real-world data**, and is confirmed about 2.4 times as often as chance pairs.
+- **The model's output behaves like expert annotation in real-world data**, and is confirmed twice as often as chance pairs.
 - Known effects it recovered include ethambutol and optic neuropathy (PRR 114), metformin and lactic acidosis (PRR 73) and
   methotrexate and leukoencephalopathy (PRR 15).
 - **20 of its pairs are FAERS signals whose effect the label does not mention**: the queue a safety reviewer would start with.

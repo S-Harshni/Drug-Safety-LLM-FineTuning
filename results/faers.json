@@ -47,23 +47,23 @@
    "median_prr": 2.79
   },
   "control": {
-   "pairs": 195,
+   "pairs": 194,
    "status": {
-    "checked": 105,
-    "effect not a FAERS term": 84,
+    "checked": 103,
+    "effect not a FAERS term": 85,
     "drug not in FAERS": 6
    },
-   "checked": 105,
-   "signal": 21,
-   "signal_share": 0.2,
-   "with_label": 77,
+   "checked": 103,
+   "signal": 28,
+   "signal_share": 0.2718,
+   "with_label": 78,
    "on_label": 18,
-   "on_label_share": 0.2338,
-   "known": 5,
-   "candidate": 10,
-   "label_only": 13,
-   "neither": 49,
-   "median_prr": 0.76
+   "on_label_share": 0.2308,
+   "known": 8,
+   "candidate": 16,
+   "label_only": 10,
+   "neither": 44,
+   "median_prr": 1.12
   }
  },
  "examples": {
