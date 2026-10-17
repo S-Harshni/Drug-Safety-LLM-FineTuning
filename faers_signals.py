@@ -142,7 +142,9 @@ def main() -> None:
                       "drugs": len(drugs), "drugs_in_faers": sum(v is not None for v in info.values()),
                       "drugs_with_label": sum(bool(v and v["label"]) for v in info.values())},
            "summary": {name: summary(rows_) for name, rows_ in checked.items()},
-           "examples": {"known": pick(lambda r: r["signal"] and r["on_label"]), "candidate": pick(lambda r: r["signal"] and not r["on_label"])}}
+           "examples": {"known": pick(lambda r: r["signal"] and r["on_label"]), "candidate": pick(lambda r: r["signal"] and not r["on_label"])},
+           "model_checked": [{k: r[k] for k in ("drug", "effect", "term", "a", "prr", "prr_low", "signal", "on_label")}
+                             for r in checked["model"] if r["status"] == "checked"]}
     (ROOT / "results" / "faers.json").write_text(json.dumps(out, indent=1))
     for name, s in out["summary"].items():
         print(f"{name:8s} checked {s['checked']}/{s['pairs']}  signal {s['signal_share']:.1%}  on label {s['on_label_share']:.1%}  "

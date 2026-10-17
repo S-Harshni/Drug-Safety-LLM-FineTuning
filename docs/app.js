@@ -124,6 +124,67 @@ const TABS = {
           notes: [`FAERS data as of ${src.faers_last_updated}, via openFDA. Reports are voluntary and unverified; counts reflect reporting, not incidence. A drug is matched by generic or brand name in any role on a report.`] })));
   },
 
+  'Check a drug'(D) {
+    FAERS.init(D.faers_live);
+    const out = h('div', {});
+    const drugIn = h('input', { id: 'drug-in', list: 'drug-list', placeholder: 'e.g. metformin', autocomplete: 'off', 'aria-label': 'Drug name' });
+    const effectIn = h('input', { id: 'effect-in', placeholder: 'optional, e.g. lactic acidosis', autocomplete: 'off', 'aria-label': 'Side effect' });
+    const list = h('datalist', { id: 'drug-list' }, D.faers_live.drugs.map(d => h('option', { value: d })));
+    const yesNo = (v, yes, no) => v == null ? '–' : verdict(v, yes, no);
+    const cols = [
+      { label: 'Reaction (FAERS term)', key: 'term' }, { label: 'Reports', key: 'a', num: true, format: F.int },
+      { label: 'PRR', key: 'prr', num: true, format: v => F.dec(v, 2) }, { label: 'PRR, lower 95%', key: 'prr_low', num: true, format: v => F.dec(v, 2) },
+      { label: 'Signal', key: 'signal', render: v => yesNo(v, 'Signal', 'No') }, { label: 'On FDA label', key: 'on_label', render: v => yesNo(v, 'Listed', 'Not found') },
+    ];
+    async function run(drug, effect) {
+      drugIn.value = drug; effectIn.value = effect || '';
+      if (!drug.trim()) return;
+      out.replaceChildren(h('p', { class: 'sub', text: `Asking openFDA about ${drug}…` }));
+      try {
+        const info = await FAERS.checkDrug(drug);
+        if (!info.found) { out.replaceChildren(h('p', { class: 'intro', text: `No FAERS reports name "${drug}". Try the generic name (for example acetaminophen rather than a brand).` })); return; }
+        const kids = [];
+        const signals = info.rows.filter(r => r.signal).length;
+        kids.push(tiles([
+          ['Reports naming the drug', F.int(info.drugTotal), `of ${F.int(info.n)} FAERS reports`],
+          ['Signals in its top 25 reactions', `${signals} of ${info.rows.length}`, 'PRR ≥ 2, χ² ≥ 4, at least 3 reports'],
+          ['FDA label', info.label ? 'Found' : 'Not found', info.label ? 'adverse reactions, warnings and boxed warning checked' : 'label checks are skipped'],
+          ['Data', 'Live', 'queried just now from openFDA'],
+        ]));
+        if (effect && effect.trim()) {
+          const pair = await FAERS.checkPair(info, effect);
+          kids.push(h('figure', { class: 'card wide', style: 'margin-top:14px' },
+            h('div', { class: 'card-head' }, h('div', {}, h('h3', { text: `${drug} and "${effect}"` }),
+              h('p', { class: 'sub', text: pair.matched ? `Matched to the FAERS term ${pair.term}.` : `No FAERS term found (tried ${pair.tried.join(', ')}).` }))),
+            pair.matched ? h('div', {}, h('p', { class: 'intro', style: 'margin:0' },
+              verdict(pair.signal, 'Signal in FDA reports', 'Not a signal'), ' ', yesNo(pair.on_label, 'On the FDA label', 'Not on the label'),
+              ` ${F.int(pair.a)} reports; reported ${F.dec(pair.prr, 1)} times as often with ${drug} as with other drugs (95% lower bound ${F.dec(pair.prr_low, 1)}).`)) : null));
+        }
+        const mine = (D.faers.model_checked || []).filter(r => r.drug === drug.trim().toLowerCase());
+        kids.push(grid(
+          card({ title: `Most reported reactions with ${drug}`, wide: true, sub: 'Sorted by number of reports. A high count alone means little: PRR asks whether the reaction is reported more with this drug than with others.',
+            table: { columns: cols, rows: info.rows } }),
+          mine.length ? card({ title: 'What the fine-tuned model extracted for this drug', wide: true, sub: 'Pairs from the held-out case-report sentences (results/faers.json).',
+            table: { columns: [{ label: 'Effect (as extracted)', key: 'effect' }, ...cols], rows: mine } }) : null));
+        kids.push(h('ul', { class: 'note-list' }, ['FAERS reports are voluntary and unverified: they show what was reported, not how often a reaction happens or that the drug caused it.',
+          'A signal is a reason to look closer, not a conclusion. Effects the drug is given for (confounding by indication) can appear as signals.',
+          'This page queries openFDA from your browser; openFDA allows about 1,000 requests a day per network without a key.'].map(t => h('li', { text: t }))));
+        out.replaceChildren(...kids);
+        renderAll();
+      } catch (err) { out.replaceChildren(h('p', { class: 'intro', text: String(err.message || err) })); }
+    }
+    const form = h('form', { class: 'control', onsubmit: e => { e.preventDefault(); run(drugIn.value, effectIn.value); } },
+      h('label', { for: 'drug-in', text: 'Drug' }), drugIn, list, h('label', { for: 'effect-in', text: 'Side effect' }), effectIn,
+      h('button', { class: 'ghost', type: 'submit', text: 'Check' }));
+    const examples = h('div', { class: 'control' }, h('span', { text: 'Try:' }),
+      [['metformin', 'lactic acidosis'], ['ethambutol', 'optic neuropathy'], ['atorvastatin', 'muscle pain'], ['amiodarone', 'pulmonary fibrosis'], ['methotrexate', '']]
+        .map(([d, e]) => h('button', { class: 'ghost', type: 'button', text: e ? `${d} + ${e}` : d, onclick: () => run(d, e) })));
+    const qs = new URLSearchParams(location.search);  // shareable: ?drug=metformin&effect=lactic%20acidosis#check-a-drug
+    if (qs.get('drug')) setTimeout(() => run(qs.get('drug'), qs.get('effect') || ''), 0);
+    return section(intro('Check any drug against the FDA Adverse Event Reporting System, live. Type a drug, and optionally a side effect in your own words: the page maps the words to the FAERS term (same rules as the Python pipeline), counts the reports, computes the proportional reporting ratio and looks the effect up in the drug\'s FDA label.'),
+      form, examples, out);
+  },
+
   Method(D) {
     const S = D.setup, best = D.detection.sizes.at(-1);
     return section(

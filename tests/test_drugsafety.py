@@ -141,3 +141,28 @@ def test_client_answers_from_cache_without_network(tmp_path):
     c.save()
     again = faers.Client(cache=tmp_path / "c.json.gz", offline=True)
     assert again.get("event", limit=1)["meta"]["results"]["total"] == 5 and again.get("label", limit=1) is None
+
+
+def test_page_checker_maps_effects_and_scores_exactly_like_python(tmp_path):
+    """docs/faers.js (the in-page drug checker) must agree with faers.py: same terms, same PRR, same label matching."""
+    import json
+    import shutil
+    import subprocess
+
+    root = Path(__file__).parents[1]
+    if not shutil.which("node"):
+        pytest.skip("needs node")
+    rules = {"uk": faers.UK, "synonyms": faers.SYNONYMS, "modifiers": list(faers.MODIFIERS), "aliases": faers.DRUG_ALIASES,
+             "label_sections": list(faers.LABEL_SECTIONS), "reaction_totals": {}, "drugs": []}
+    effects = ["fever", "worsening diarrhea", "cisplatin-induced vomiting", "severe hypomagnesemia", "cognitive impairments",
+               "hepatotoxic reactions", "rashes", "seizures", "psychosis", "acute renal failure", "congestive heart failure", "hyperuricemia"]
+    label = "warnings: lactic acidosis, hypoglycemia and diarrhea have been reported."
+    script = tmp_path / "run.js"
+    script.write_text(f"""const F = require({json.dumps(str(root / 'docs' / 'faers.js'))}); F.init({json.dumps(rules)});
+const e = {json.dumps(effects)};
+console.log(JSON.stringify({{c: e.map(F.candidates), p: F.prr(20, 1000, 220, 100000), l: [F.onLabel({json.dumps(label)}, 'hypoglycaemia', 'HYPOGLYCAEMIA'), F.onLabel({json.dumps(label)}, 'rash', 'RASH')]}}));""")
+    got = json.loads(subprocess.run(["node", str(script)], capture_output=True, text=True, check=True).stdout)
+    assert got["c"] == [faers.candidates(e) for e in effects]
+    py = faers.prr(20, 1000, 220, 100_000)
+    assert got["p"]["prr"] == pytest.approx(py["prr"], rel=1e-3) and got["p"]["signal"] == faers.is_signal(py)
+    assert got["l"] == [faers.on_label(label, "hypoglycaemia", "HYPOGLYCAEMIA"), faers.on_label(label, "rash", "RASH")]

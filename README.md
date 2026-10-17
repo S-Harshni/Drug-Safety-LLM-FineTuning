@@ -97,6 +97,16 @@ The same check runs on the annotators' pairs and on shuffled pairs (each model p
   abbreviations such as 5-FU). Every openFDA response is cached in `data/faers_cache.json.gz`, so `python faers_signals.py --offline`
   reproduces the table without the API.
 
+### Check any drug yourself (live)
+
+The **Check a drug** tab on the [live page](https://s-harshni.github.io/Drug-Safety-LLM-FineTuning/) runs the same check on
+any drug, live from the browser: type a drug and optionally a side effect in your own words. It shows how many FAERS reports
+name the drug, its 25 most reported reactions with PRR, signal and FDA-label status, a verdict for the side effect you typed,
+and what the fine-tuned model extracted for that drug. [`docs/faers.js`](docs/faers.js) uses the term rules exported from
+`faers.py`, and a test checks that the page and Python map effects and compute PRR identically. Links are shareable, e.g.
+[metformin and lactic acidosis](https://s-harshni.github.io/Drug-Safety-LLM-FineTuning/?drug=metformin&effect=lactic%20acidosis#check-a-drug)
+(19,399 reports, PRR 72.9, on the label).
+
 ## How it works
 
 - **Base model:** [`Qwen/Qwen2.5-0.5B-Instruct`](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct), frozen.
@@ -115,14 +125,14 @@ ollama pull qwen2.5:3b && python eval_prompting.py    # the larger prompted mode
 python demo_examples.py     # runs the adapters on sentences written for the demo page
 python build_demo.py        # docs/data.json for the demo page
 python faers_signals.py     # real-world check against FDA data (cached; --offline needs no API)
-pytest -q                   # 13 tests
+pytest -q                   # 14 tests
 ```
 
 Tested on an Apple-silicon laptop (mps); it also runs on CUDA or, slowly, on CPU.
 
 ## Tests
 
-13 tests, run in CI: the hash split and de-duplication, every metric on a hand-worked case, threshold selection, the bootstrap interval, prompt construction and parsing, that a fresh LoRA adapter changes nothing and trains only adapter weights, that training labels cover only the answer tokens, the PRR on a hand-worked 2x2 table, MedDRA spelling and label matching, and the offline cache.
+14 tests, run in CI: the hash split and de-duplication, every metric on a hand-worked case, threshold selection, the bootstrap interval, prompt construction and parsing, that a fresh LoRA adapter changes nothing and trains only adapter weights, that training labels cover only the answer tokens, the PRR on a hand-worked 2x2 table, MedDRA spelling and label matching, the offline cache, and that the in-page checker agrees with Python.
 
 ## Limitations
 

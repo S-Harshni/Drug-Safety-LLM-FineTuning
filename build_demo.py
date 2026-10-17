@@ -3,6 +3,7 @@
     python run.py && python eval_prompting.py && python demo_examples.py && python faers_signals.py && python build_demo.py
 """
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -43,6 +44,26 @@ def load_results() -> dict:
     }
 
 
+def faers_live() -> dict:
+    """What the in-page drug checker needs: the same normalisation rules as faers.py (so the page and Python agree),
+    reaction totals already fetched (fewer live calls) and the drugs from the corpus for suggestions."""
+    import gzip
+
+    from drugsafety import faers
+
+    cache_file = ROOT / "data" / "faers_cache.json.gz"
+    cache = json.loads(gzip.decompress(cache_file.read_bytes())) if cache_file.exists() else {}
+    prefix = 'event?limit=1&search=patient.reaction.reactionmeddrapt.exact:"'
+    totals = {k[len(prefix):-1]: v["meta"]["results"]["total"] for k, v in cache.items() if k.startswith(prefix) and v}
+    glob = cache.get("event?count=patient.reaction.reactionmeddrapt.exact&limit=100")
+    for r in (glob or {}).get("results", []):
+        totals[r["term"]] = r["count"]
+    found = re.compile(r'^event\?limit=1&search=\(patient\.drug\.openfda\.generic_name:"([^"]+)"')
+    drugs = sorted({m.group(1) for k, v in cache.items() if v and (m := found.match(k))})
+    return {"uk": faers.UK, "synonyms": faers.SYNONYMS, "modifiers": list(faers.MODIFIERS), "aliases": faers.DRUG_ALIASES,
+            "label_sections": list(faers.LABEL_SECTIONS), "reaction_totals": totals, "drugs": drugs}
+
+
 def main() -> None:
     results = load_results()
     prompting_file = ROOT / "results" / "prompting.json"
@@ -61,6 +82,7 @@ def main() -> None:
         "prompted_model": prompting and {k: prompting[k] for k in ("model", "runtime", "detect_sentences", "extract_sentences")},
         "detect_examples": examples["detection"], "extract_examples": examples["extraction"],
         "faers": json.loads((ROOT / "results" / "faers.json").read_text()) if (ROOT / "results" / "faers.json").exists() else None,
+        "faers_live": faers_live(),
     }
     (ROOT / "docs" / "data.json").write_text(json.dumps(out, separators=(",", ":")))
     print("written", (ROOT / "docs" / "data.json").stat().st_size // 1024, "KB")

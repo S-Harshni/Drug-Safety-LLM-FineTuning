@@ -359,5 +359,1007 @@
     "on_label": false
    }
   ]
- }
+ },
+ "model_checked": [
+  {
+   "drug": "acetazolamide",
+   "effect": "osteomalacia",
+   "term": "OSTEOMALACIA",
+   "a": 1,
+   "prr": 2.23,
+   "prr_low": 0.314,
+   "signal": false,
+   "on_label": true
+  },
+  {
+   "drug": "adalimumab",
+   "effect": "macrophagic activation syndrome",
+   "term": "HAEMOPHAGOCYTIC LYMPHOHISTIOCYTOSIS",
+   "a": 275,
+   "prr": 1.111,
+   "prr_low": 0.985,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "adalimumab",
+   "effect": "visceral leishmaniasis",
+   "term": "VISCERAL LEISHMANIASIS",
+   "a": 63,
+   "prr": 2.714,
+   "prr_low": 2.095,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "adrenaline",
+   "effect": "dilated cardiomyopathy",
+   "term": "DILATED CARDIOMYOPATHY",
+   "a": 5,
+   "prr": 1.002,
+   "prr_low": 0.416,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "albendazole",
+   "effect": "abdominal pain",
+   "term": "ABDOMINAL PAIN",
+   "a": 53,
+   "prr": 2.535,
+   "prr_low": 1.944,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "albendazole",
+   "effect": "fever",
+   "term": "PYREXIA",
+   "a": 243,
+   "prr": 7.808,
+   "prr_low": 6.943,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "albendazole",
+   "effect": "worsening diarrhea",
+   "term": "DIARRHOEA",
+   "a": 90,
+   "prr": 1.556,
+   "prr_low": 1.272,
+   "signal": false,
+   "on_label": true
+  },
+  {
+   "drug": "alendronate sodium",
+   "effect": "scleritis",
+   "term": "SCLERITIS",
+   "a": 115,
+   "prr": 15.988,
+   "prr_low": 13.225,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "amoxapine",
+   "effect": "cognitive impairments",
+   "term": "COGNITIVE DISORDER",
+   "a": 2,
+   "prr": 1.906,
+   "prr_low": 0.478,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "amoxicillin",
+   "effect": "allergy",
+   "term": "HYPERSENSITIVITY",
+   "a": 2224,
+   "prr": 2.496,
+   "prr_low": 2.395,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "ampicillin",
+   "effect": "eosinophilia",
+   "term": "EOSINOPHILIA",
+   "a": 55,
+   "prr": 6.154,
+   "prr_low": 4.726,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "ampicillin",
+   "effect": "rapid onset of renal failure",
+   "term": "RENAL FAILURE",
+   "a": 375,
+   "prr": 5.479,
+   "prr_low": 4.959,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "ampicillin",
+   "effect": "skin rash",
+   "term": "RASH",
+   "a": 377,
+   "prr": 1.696,
+   "prr_low": 1.536,
+   "signal": false,
+   "on_label": true
+  },
+  {
+   "drug": "aspirin",
+   "effect": "acute subdural haematoma",
+   "term": "SUBDURAL HAEMATOMA",
+   "a": 1661,
+   "prr": 3.365,
+   "prr_low": 3.197,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "bleomycin",
+   "effect": "hyperpigmentation",
+   "term": "SKIN HYPERPIGMENTATION",
+   "a": 13,
+   "prr": 3.099,
+   "prr_low": 1.799,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "bromocriptine",
+   "effect": "schizophrenia",
+   "term": "SCHIZOPHRENIA",
+   "a": 1,
+   "prr": 2.669,
+   "prr_low": 0.376,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "carnitine",
+   "effect": "hepatotoxic effects",
+   "term": "HEPATOTOXICITY",
+   "a": 0,
+   "prr": 0.0,
+   "prr_low": 0.0,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "cefazolin",
+   "effect": "hypersensitivity reaction",
+   "term": "HYPERSENSITIVITY",
+   "a": 169,
+   "prr": 1.596,
+   "prr_low": 1.374,
+   "signal": false,
+   "on_label": true
+  },
+  {
+   "drug": "cefuroxime",
+   "effect": "allergy",
+   "term": "HYPERSENSITIVITY",
+   "a": 563,
+   "prr": 4.074,
+   "prr_low": 3.756,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "chloroquine",
+   "effect": "toxicity",
+   "term": "TOXICITY TO VARIOUS AGENTS",
+   "a": 36,
+   "prr": 6.879,
+   "prr_low": 5.007,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "cibenzoline",
+   "effect": "cardiac failure",
+   "term": "CARDIAC FAILURE",
+   "a": 7,
+   "prr": 13.736,
+   "prr_low": 6.679,
+   "signal": true,
+   "on_label": null
+  },
+  {
+   "drug": "cisplatin",
+   "effect": "anaphylactoid reactions",
+   "term": "ANAPHYLACTOID REACTION",
+   "a": 14,
+   "prr": 0.922,
+   "prr_low": 0.546,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "clomipramine",
+   "effect": "serotonin syndrome",
+   "term": "SEROTONIN SYNDROME",
+   "a": 80,
+   "prr": 19.547,
+   "prr_low": 15.724,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "cloxacillin",
+   "effect": "allergy",
+   "term": "HYPERSENSITIVITY",
+   "a": 8,
+   "prr": 0.59,
+   "prr_low": 0.295,
+   "signal": false,
+   "on_label": null
+  },
+  {
+   "drug": "clozapine",
+   "effect": "serotonin syndrome",
+   "term": "SEROTONIN SYNDROME",
+   "a": 207,
+   "prr": 1.827,
+   "prr_low": 1.593,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "colchicine",
+   "effect": "myopathy",
+   "term": "MYOPATHY",
+   "a": 229,
+   "prr": 21.624,
+   "prr_low": 18.974,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "cpa",
+   "effect": "severe hepatotoxic reactions",
+   "term": "HEPATOTOXICITY",
+   "a": 937,
+   "prr": 5.216,
+   "prr_low": 4.887,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "cyclosposphamide",
+   "effect": "developmental delay",
+   "term": "DEVELOPMENTAL DELAY",
+   "a": 12,
+   "prr": 0.156,
+   "prr_low": 0.089,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "dexamethasone",
+   "effect": "cisplatin-induced vomiting",
+   "term": "VOMITING",
+   "a": 9249,
+   "prr": 1.349,
+   "prr_low": 1.322,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "dexamethasone",
+   "effect": "vomiting",
+   "term": "VOMITING",
+   "a": 9249,
+   "prr": 1.349,
+   "prr_low": 1.322,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "diltiazem",
+   "effect": "cutaneous vasculitis",
+   "term": "CUTANEOUS VASCULITIS",
+   "a": 6,
+   "prr": 1.202,
+   "prr_low": 0.54,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "efavirenz",
+   "effect": "psychosis",
+   "term": "PSYCHOTIC DISORDER",
+   "a": 73,
+   "prr": 4.656,
+   "prr_low": 3.703,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "enoxaparin",
+   "effect": "hepatotoxicity",
+   "term": "HEPATOTOXICITY",
+   "a": 84,
+   "prr": 1.39,
+   "prr_low": 1.122,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "ethambutol",
+   "effect": "bilateral optic neuropathy",
+   "term": "OPTIC NEUROPATHY",
+   "a": 30,
+   "prr": 113.901,
+   "prr_low": 79.588,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "fentanyl",
+   "effect": "adrenocortical insufficiency",
+   "term": "ADRENAL INSUFFICIENCY",
+   "a": 109,
+   "prr": 1.668,
+   "prr_low": 1.381,
+   "signal": false,
+   "on_label": true
+  },
+  {
+   "drug": "flecainide",
+   "effect": "death",
+   "term": "DEATH",
+   "a": 104,
+   "prr": 0.483,
+   "prr_low": 0.399,
+   "signal": false,
+   "on_label": true
+  },
+  {
+   "drug": "fludarabine",
+   "effect": "aml",
+   "term": "ACUTE MYELOID LEUKAEMIA",
+   "a": 785,
+   "prr": 28.447,
+   "prr_low": 26.494,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "fludarabine",
+   "effect": "lung cancer",
+   "term": "LUNG NEOPLASM MALIGNANT",
+   "a": 70,
+   "prr": 0.909,
+   "prr_low": 0.719,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "flurbiprofen",
+   "effect": "acute tubulointerstitial nephritis",
+   "term": "TUBULOINTERSTITIAL NEPHRITIS",
+   "a": 8,
+   "prr": 5.721,
+   "prr_low": 2.866,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "flurbiprofen",
+   "effect": "delayed hypersensitivity",
+   "term": "HYPERSENSITIVITY",
+   "a": 34,
+   "prr": 2.456,
+   "prr_low": 1.762,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "foscarnet",
+   "effect": "electrolyte disorders",
+   "term": "ELECTROLYTE IMBALANCE",
+   "a": 45,
+   "prr": 20.738,
+   "prr_low": 15.501,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "foscarnet",
+   "effect": "severe hypomagnesemia",
+   "term": "HYPOMAGNESAEMIA",
+   "a": 54,
+   "prr": 20.629,
+   "prr_low": 15.82,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "furosemide",
+   "effect": "congestive heart failure",
+   "term": "CARDIAC FAILURE CONGESTIVE",
+   "a": 12088,
+   "prr": 9.064,
+   "prr_low": 8.892,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "gentamicin",
+   "effect": "acute renal failure",
+   "term": "RENAL FAILURE",
+   "a": 706,
+   "prr": 7.077,
+   "prr_low": 6.583,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "gentamicin",
+   "effect": "hypersensitivity reaction",
+   "term": "HYPERSENSITIVITY",
+   "a": 163,
+   "prr": 1.174,
+   "prr_low": 1.008,
+   "signal": false,
+   "on_label": true
+  },
+  {
+   "drug": "halothane",
+   "effect": "hepatitis",
+   "term": "HEPATITIS",
+   "a": 2,
+   "prr": 8.073,
+   "prr_low": 2.033,
+   "signal": false,
+   "on_label": null
+  },
+  {
+   "drug": "heparin",
+   "effect": "thrombosis",
+   "term": "THROMBOSIS",
+   "a": 453,
+   "prr": 8.312,
+   "prr_low": 7.59,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "ifn-alpha",
+   "effect": "akathisia",
+   "term": "AKATHISIA",
+   "a": 0,
+   "prr": 0.0,
+   "prr_low": 0.0,
+   "signal": false,
+   "on_label": null
+  },
+  {
+   "drug": "ifn-alpha",
+   "effect": "depression",
+   "term": "DEPRESSION",
+   "a": 59,
+   "prr": 4.011,
+   "prr_low": 3.125,
+   "signal": true,
+   "on_label": null
+  },
+  {
+   "drug": "ifn-alpha",
+   "effect": "headache",
+   "term": "HEADACHE",
+   "a": 47,
+   "prr": 1.166,
+   "prr_low": 0.88,
+   "signal": false,
+   "on_label": null
+  },
+  {
+   "drug": "ifn-alpha",
+   "effect": "hyperthyroidism",
+   "term": "HYPERTHYROIDISM",
+   "a": 11,
+   "prr": 11.82,
+   "prr_low": 6.56,
+   "signal": true,
+   "on_label": null
+  },
+  {
+   "drug": "ifn-alpha",
+   "effect": "hypoglycemia",
+   "term": "HYPOGLYCAEMIA",
+   "a": 7,
+   "prr": 2.24,
+   "prr_low": 1.07,
+   "signal": false,
+   "on_label": null
+  },
+  {
+   "drug": "ifn-alpha",
+   "effect": "insomnia",
+   "term": "INSOMNIA",
+   "a": 27,
+   "prr": 1.572,
+   "prr_low": 1.082,
+   "signal": false,
+   "on_label": null
+  },
+  {
+   "drug": "insulin",
+   "effect": "hypoglycaemia",
+   "term": "HYPOGLYCAEMIA",
+   "a": 14279,
+   "prr": 18.108,
+   "prr_low": 17.761,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "interferon alpha",
+   "effect": "livedo reticularis",
+   "term": "LIVEDO RETICULARIS",
+   "a": 1,
+   "prr": 7.447,
+   "prr_low": 1.049,
+   "signal": false,
+   "on_label": null
+  },
+  {
+   "drug": "itraconazole",
+   "effect": "drug eruption",
+   "term": "DRUG ERUPTION",
+   "a": 47,
+   "prr": 4.825,
+   "prr_low": 3.626,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "itraconazole",
+   "effect": "hepatotoxic reactions",
+   "term": "HEPATOTOXICITY",
+   "a": 70,
+   "prr": 5.717,
+   "prr_low": 4.525,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "itraconazole",
+   "effect": "vanishing bile duct syndrome",
+   "term": "VANISHING BILE DUCT SYNDROME",
+   "a": 6,
+   "prr": 9.804,
+   "prr_low": 4.396,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "lamivudine",
+   "effect": "lactic acidosis",
+   "term": "LACTIC ACIDOSIS",
+   "a": 326,
+   "prr": 5.074,
+   "prr_low": 4.551,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "leflunomide",
+   "effect": "cellulitis",
+   "term": "CELLULITIS",
+   "a": 712,
+   "prr": 2.872,
+   "prr_low": 2.668,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "leflunomide",
+   "effect": "lower respiratory tract infections",
+   "term": "LOWER RESPIRATORY TRACT INFECTION",
+   "a": 5703,
+   "prr": 28.924,
+   "prr_low": 28.15,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "leflunomide",
+   "effect": "mycotic aneurysm",
+   "term": "MYCOTIC ANEURYSM",
+   "a": 1,
+   "prr": 2.384,
+   "prr_low": 0.332,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "lithium",
+   "effect": "nephrotic syndrome",
+   "term": "NEPHROTIC SYNDROME",
+   "a": 47,
+   "prr": 3.418,
+   "prr_low": 2.566,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "mefloquine",
+   "effect": "hypoglycaemia",
+   "term": "HYPOGLYCAEMIA",
+   "a": 0,
+   "prr": 0.0,
+   "prr_low": 0.0,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "mequitazine",
+   "effect": "photosensitivity reaction",
+   "term": "PHOTOSENSITIVITY REACTION",
+   "a": 0,
+   "prr": 0.0,
+   "prr_low": 0.0,
+   "signal": false,
+   "on_label": null
+  },
+  {
+   "drug": "metformin",
+   "effect": "lactic acidosis",
+   "term": "LACTIC ACIDOSIS",
+   "a": 19399,
+   "prr": 72.896,
+   "prr_low": 71.28,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "methotrexate",
+   "effect": "fatal encephalopathy",
+   "term": "ENCEPHALOPATHY",
+   "a": 1223,
+   "prr": 2.198,
+   "prr_low": 2.075,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "methotrexate",
+   "effect": "leukoencephalopathy",
+   "term": "LEUKOENCEPHALOPATHY",
+   "a": 1008,
+   "prr": 15.485,
+   "prr_low": 14.405,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "methotrexate",
+   "effect": "neurotoxicity",
+   "term": "NEUROTOXICITY",
+   "a": 1637,
+   "prr": 4.354,
+   "prr_low": 4.138,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "morphine",
+   "effect": "hypertension",
+   "term": "HYPERTENSION",
+   "a": 3078,
+   "prr": 1.597,
+   "prr_low": 1.542,
+   "signal": false,
+   "on_label": true
+  },
+  {
+   "drug": "morphine",
+   "effect": "respiratory failure",
+   "term": "RESPIRATORY FAILURE",
+   "a": 1711,
+   "prr": 2.603,
+   "prr_low": 2.482,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "morphine",
+   "effect": "status epilepticus",
+   "term": "STATUS EPILEPTICUS",
+   "a": 81,
+   "prr": 0.781,
+   "prr_low": 0.628,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "nimodipine",
+   "effect": "hypotension",
+   "term": "HYPOTENSION",
+   "a": 57,
+   "prr": 5.412,
+   "prr_low": 4.203,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "nitrofurantoin",
+   "effect": "acute liver damage",
+   "term": "LIVER INJURY",
+   "a": 106,
+   "prr": 4.054,
+   "prr_low": 3.352,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "oxybutynin",
+   "effect": "acute bilateral blindness",
+   "term": "BLINDNESS",
+   "a": 87,
+   "prr": 1.19,
+   "prr_low": 0.964,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "oxybutynin",
+   "effect": "hypertension",
+   "term": "HYPERTENSION",
+   "a": 524,
+   "prr": 1.377,
+   "prr_low": 1.264,
+   "signal": false,
+   "on_label": true
+  },
+  {
+   "drug": "pancrease mt 16",
+   "effect": "vomiting",
+   "term": "VOMITING",
+   "a": 0,
+   "prr": 0.0,
+   "prr_low": 0.0,
+   "signal": false,
+   "on_label": null
+  },
+  {
+   "drug": "paracetamol",
+   "effect": "poisoning",
+   "term": "POISONING",
+   "a": 806,
+   "prr": 2.29,
+   "prr_low": 2.132,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "partusisten",
+   "effect": "supraventricular tachycardia",
+   "term": "SUPRAVENTRICULAR TACHYCARDIA",
+   "a": 0,
+   "prr": 0.0,
+   "prr_low": 0.0,
+   "signal": false,
+   "on_label": null
+  },
+  {
+   "drug": "peginterferon alpha-2b",
+   "effect": "type 1 diabetes mellitus",
+   "term": "TYPE 1 DIABETES MELLITUS",
+   "a": 0,
+   "prr": 0.0,
+   "prr_low": 0.0,
+   "signal": false,
+   "on_label": null
+  },
+  {
+   "drug": "penicillamine",
+   "effect": "thrombotic thrombocytopenic purpura",
+   "term": "THROMBOTIC THROMBOCYTOPENIC PURPURA",
+   "a": 0,
+   "prr": 0.0,
+   "prr_low": 0.0,
+   "signal": false,
+   "on_label": true
+  },
+  {
+   "drug": "penicillin g",
+   "effect": "hypersensitivity reaction",
+   "term": "HYPERSENSITIVITY",
+   "a": 450,
+   "prr": 10.515,
+   "prr_low": 9.628,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "procainamide",
+   "effect": "glomerulonephritis",
+   "term": "GLOMERULONEPHRITIS",
+   "a": 0,
+   "prr": 0.0,
+   "prr_low": 0.0,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "quinine",
+   "effect": "hypoglycaemia",
+   "term": "HYPOGLYCAEMIA",
+   "a": 78,
+   "prr": 3.737,
+   "prr_low": 2.996,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "ribavirin",
+   "effect": "type 1 diabetes mellitus",
+   "term": "TYPE 1 DIABETES MELLITUS",
+   "a": 45,
+   "prr": 2.468,
+   "prr_low": 1.841,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "salicylate",
+   "effect": "hepatotoxicity",
+   "term": "HEPATOTOXICITY",
+   "a": 13,
+   "prr": 3.181,
+   "prr_low": 1.849,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "sorafenib",
+   "effect": "acute renal failure",
+   "term": "RENAL FAILURE",
+   "a": 251,
+   "prr": 1.907,
+   "prr_low": 1.686,
+   "signal": false,
+   "on_label": true
+  },
+  {
+   "drug": "sorafenib",
+   "effect": "hyperkalemia",
+   "term": "HYPERKALAEMIA",
+   "a": 89,
+   "prr": 2.593,
+   "prr_low": 2.107,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "sorafenib",
+   "effect": "hyperuricemia",
+   "term": "HYPERURICAEMIA",
+   "a": 27,
+   "prr": 6.722,
+   "prr_low": 4.605,
+   "signal": true,
+   "on_label": false
+  },
+  {
+   "drug": "stavudine",
+   "effect": "lactic acidosis",
+   "term": "LACTIC ACIDOSIS",
+   "a": 276,
+   "prr": 34.555,
+   "prr_low": 30.789,
+   "signal": true,
+   "on_label": null
+  },
+  {
+   "drug": "sumatriptan",
+   "effect": "cardiac arrest",
+   "term": "CARDIAC ARREST",
+   "a": 155,
+   "prr": 0.851,
+   "prr_low": 0.727,
+   "signal": false,
+   "on_label": false
+  },
+  {
+   "drug": "sunitinib",
+   "effect": "pain",
+   "term": "PAIN",
+   "a": 1290,
+   "prr": 1.125,
+   "prr_low": 1.066,
+   "signal": false,
+   "on_label": true
+  },
+  {
+   "drug": "temozolomide",
+   "effect": "rash",
+   "term": "RASH",
+   "a": 303,
+   "prr": 0.699,
+   "prr_low": 0.625,
+   "signal": false,
+   "on_label": true
+  },
+  {
+   "drug": "tetracosactrin",
+   "effect": "hypoglycaemia",
+   "term": "HYPOGLYCAEMIA",
+   "a": 0,
+   "prr": 0.0,
+   "prr_low": 0.0,
+   "signal": false,
+   "on_label": null
+  },
+  {
+   "drug": "thiazide diuretics",
+   "effect": "nephrogenic diabetes insipidus",
+   "term": "NEPHROGENIC DIABETES INSIPIDUS",
+   "a": 0,
+   "prr": 0.0,
+   "prr_low": 0.0,
+   "signal": false,
+   "on_label": null
+  },
+  {
+   "drug": "thiazide diuretics",
+   "effect": "polyuria",
+   "term": "POLYURIA",
+   "a": 0,
+   "prr": 0.0,
+   "prr_low": 0.0,
+   "signal": false,
+   "on_label": null
+  },
+  {
+   "drug": "valproate",
+   "effect": "hepatotoxic effects",
+   "term": "HEPATOTOXICITY",
+   "a": 65,
+   "prr": 2.998,
+   "prr_low": 2.351,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "valproate",
+   "effect": "severe hypotension",
+   "term": "HYPOTENSION",
+   "a": 408,
+   "prr": 2.081,
+   "prr_low": 1.89,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "warfarin",
+   "effect": "fatal haemorrhage",
+   "term": "HAEMORRHAGE",
+   "a": 4075,
+   "prr": 6.633,
+   "prr_low": 6.432,
+   "signal": true,
+   "on_label": true
+  },
+  {
+   "drug": "ziprasidone",
+   "effect": "tardive dyskinesia",
+   "term": "TARDIVE DYSKINESIA",
+   "a": 103,
+   "prr": 12.372,
+   "prr_low": 10.212,
+   "signal": true,
+   "on_label": true
+  }
+ ]
 }
